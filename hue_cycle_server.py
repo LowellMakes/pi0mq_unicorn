@@ -4,9 +4,8 @@
 # anyone who is listening.
 #----------------------------------------------------------
 
-# Comms libraries, zmq for socket communications, msgpack for message binarization
+# Comms library
 import zmq
-import msgpack
 
 # library for color conversion
 import colorsys

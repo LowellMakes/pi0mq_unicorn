@@ -4,11 +4,9 @@
 # of RGB pixel values, write them out to the unicorn PHAT
 # -----------------------------------------------------------------------------
 
-import sys
 import zmq
 #import unicornhat as unicorn
 import colorsys
-import msgpack
 
 #  Socket to talk to server
 context = zmq.Context()
