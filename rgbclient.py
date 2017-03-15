@@ -13,7 +13,7 @@ context = zmq.Context()
 socket = context.socket(zmq.SUB)
 
 # Connect to a machine (presently hardcoded to Brad's laptop
-socket.connect("epgm://10.1.10.150:5556")
+socket.connect("tcp://10.1.10.150:5556")
 
 # Set the socket to subscribe
 socket.setsockopt(zmq.SUBSCRIBE, "")
