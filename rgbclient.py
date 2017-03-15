@@ -6,7 +6,7 @@
 
 import sys
 import zmq
-import unicornhat as unicorn
+#import unicornhat as unicorn
 import colorsys
 import msgpack
 
@@ -17,22 +17,16 @@ socket = context.socket(zmq.SUB)
 # Connect to a machine (presently hardcoded to Brad's laptop
 socket.connect("tcp://vulpix.lowellmakes.lan:5556")
 
-# Only listen to a particular topic
-topicfilter = "blinken"
-socket.setsockopt_string(zmq.SUBSCRIBE, \
-                         topicfilter.decode('ascii'), \
-                         encoding="utf-8")
+# Set the socket to subscribe
+socket.setsockopt(zmq.SUBSCRIBE, "")
 # Set up our unicorn hat
 unicorn.set_layout(unicorn.AUTO)
 unicorn.rotation(0)
 unicorn.brightness(0.5)
 
-
 while True:
-    # receive and unpack our message
-    data = socket.recv_string()
-    message = msgpack.unpackb(data)
-    pixels = messsage["pixels"]
+    # receive and blink out our message
+    pixels = socket.recv_pyobj()
     unicorn.set_pixels(pixels)
     unicorn.show()
     
