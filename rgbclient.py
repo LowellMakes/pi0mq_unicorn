@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------
 
 import zmq
-#import unicornhat as unicorn
+import unicornhat as unicorn
 import colorsys
 
 #  Socket to talk to server
