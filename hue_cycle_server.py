@@ -42,10 +42,11 @@ def print_publish_line(r, g, b):
     print_sparkline(r, g, b)
 
 
-# Set up our publisher.  We'll publish to anyone listening on tcp port 5556.
+# Set up our publisher.  We'll publish to anyone listening on epgm port 5556.
 context = zmq.Context()
 socket = context.socket(zmq.PUB)
-socket.bind("tcp://*:5556")
+socket.setsockopt(zmq.LINGER, 0) # discard unsent messages on close
+socket.bind("epgm://10.1.10.150:5556")
 
 # generate a cycle of N hues
 n = float(sys.argv[1])
